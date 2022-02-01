@@ -1,3 +1,4 @@
+// Hooks
 import { useCallback, useState } from 'react';
 
 const useToggle = (initialState: boolean = false): [boolean, () => void] => {
