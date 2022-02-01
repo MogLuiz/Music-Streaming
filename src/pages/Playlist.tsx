@@ -1,9 +1,18 @@
+// Packages
 import React, { useState } from "react";
+
+// Mock
 import { responseDemo } from "../mock";
 
 function Playlist() {
+  // -------------------------------------------------
+	// States
+	// -------------------------------------------------
   const [data] = useState(responseDemo);
 
+  // -------------------------------------------------
+	// Render
+	// -------------------------------------------------
   return (
     <div className="playlists">
       <div className="list">

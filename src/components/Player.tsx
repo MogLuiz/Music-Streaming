@@ -1,4 +1,4 @@
-import React from "react";
+// Packages
 import { useAudioPlayer } from "react-use-audio-player";
 
 const AudioPlayer = ({
@@ -15,10 +15,15 @@ const AudioPlayer = ({
     autoplay: true,
     onend: () => console.log("sound has ended!"),
   });
-
+  // -------------------------------------------------
+	// Texts
+	// -------------------------------------------------
   if (!ready && !loading) return <div>No audio to play</div>;
   if (loading) return <div>Loading audio</div>;
 
+  // -------------------------------------------------
+	// Render
+	// -------------------------------------------------
   return (
     <div className="audio-player-wrapper">
       <div className="audio-player">

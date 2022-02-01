@@ -1,6 +1,7 @@
-import React from "react";
-
 export default function Header() {
+  // -------------------------------------------------
+	// Render
+	// -------------------------------------------------
   return (
     <>
       <div className="header" style={{ backgroundImage: `url(Playlist.jpg)` }}>

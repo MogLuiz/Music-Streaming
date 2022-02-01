@@ -1,6 +1,7 @@
-import React from "react";
-
 const Toggle = (props: any) => (
+  // -------------------------------------------------
+	// Render
+	// -------------------------------------------------
   <div className="dark-mode-toggle">
     <button type="button" onClick={() => props.setDarkMode(false)}>
       ☀
