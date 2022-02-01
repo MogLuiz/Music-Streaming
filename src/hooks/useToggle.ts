@@ -1,21 +1,24 @@
 // Hooks
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
 const useToggle = (initialState: boolean = false): [boolean, () => void] => {
-    // -------------------------------------------------
-	// States
-	// -------------------------------------------------
-    const [isToggleOn, setIsToggleOn] = useState<boolean>(initialState)
+  // -------------------------------------------------
+  // States
+  // -------------------------------------------------
+  const [isToggleOn, setIsToggleOn] = useState<boolean>(initialState);
 
-    // -------------------------------------------------
-	// Hooks
-	// -------------------------------------------------
-    const toggleSetter = useCallback((): void => setIsToggleOn((state) => !state), [])
+  // -------------------------------------------------
+  // Hooks
+  // -------------------------------------------------
+  const toggleSetter = useCallback(
+    (): void => setIsToggleOn((state) => !state),
+    []
+  );
 
-    // -------------------------------------------------
-	// Return
-	// -------------------------------------------------
-    return [isToggleOn, toggleSetter]
-}
+  // -------------------------------------------------
+  // Return
+  // -------------------------------------------------
+  return [isToggleOn, toggleSetter];
+};
 
 export default useToggle;

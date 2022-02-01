@@ -3,13 +3,13 @@ import useToggle from "../hooks/useToggle";
 
 const Toggle = (props: any) => {
   // -------------------------------------------------
-	// Custom Hook
-	// -------------------------------------------------
-  const [isToggleOn, toggleSetter] = useToggle()
+  // Custom Hook
+  // -------------------------------------------------
+  const [isToggleOn, toggleSetter] = useToggle();
 
   // -------------------------------------------------
-	// Render
-	// -------------------------------------------------
+  // Render
+  // -------------------------------------------------
   return (
     <div className="dark-mode-toggle">
       <button type="button" onClick={toggleSetter}>
@@ -29,7 +29,7 @@ const Toggle = (props: any) => {
         ☾
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default Toggle;

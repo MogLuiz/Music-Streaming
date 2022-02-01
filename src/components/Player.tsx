@@ -16,14 +16,14 @@ const AudioPlayer = ({
     onend: () => console.log("sound has ended!"),
   });
   // -------------------------------------------------
-	// Texts
-	// -------------------------------------------------
+  // Texts
+  // -------------------------------------------------
   if (!ready && !loading) return <div>No audio to play</div>;
   if (loading) return <div>Loading audio</div>;
 
   // -------------------------------------------------
-	// Render
-	// -------------------------------------------------
+  // Render
+  // -------------------------------------------------
   return (
     <div className="audio-player-wrapper">
       <div className="audio-player">
