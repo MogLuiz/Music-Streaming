@@ -17,3 +17,12 @@ export enum RequestStatus {
   fetching = "fetching",
 }
 
+interface State<T> {
+  status: RequestStatus;
+  data?: T;
+  error?: string;
+}
+
+interface Cache<T> {
+  [url: string]: T;
+}
