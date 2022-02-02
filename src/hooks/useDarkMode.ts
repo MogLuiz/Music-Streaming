@@ -28,5 +28,6 @@ const useDarkMode = () => {
 
 export default useDarkMode;
 
-const usePreferDarkMode = () =>  useMedia<boolean>(["(prefers-color-scheme: dark)"], [true], false)
+function usePreferDarkMode() {
+  return useMedia<boolean>(["(prefers-color-scheme: dark)"], [true], false);
 }
