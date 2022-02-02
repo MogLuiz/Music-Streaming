@@ -10,3 +10,10 @@ export enum RequestType {
   failure = "failure",
 }
 
+export enum RequestStatus {
+  init = "init",
+  error = "error",
+  fetched = "fetched",
+  fetching = "fetching",
+}
+
