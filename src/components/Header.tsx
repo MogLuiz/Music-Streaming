@@ -6,9 +6,9 @@ export default function Header() {
     <>
       <div className="header" style={{ backgroundImage: `url(Playlist.jpg)` }}>
         <div className="heading">
-          <span>This is </span>
+          {/* <span>This is </span>
           <h1>Experts Club</h1>
-          <p className="listeners-head">9999 Monthly Listeners</p>
+          <p className="listeners-head">9999 Monthly Listeners</p> */}
         </div>
       </div>
 
