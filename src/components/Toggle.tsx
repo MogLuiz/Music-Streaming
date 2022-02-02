@@ -1,18 +1,29 @@
-// Custom Hook
+// Custom Hooks
+import useLocalStorage from "../hooks/useLocalStorage";
 import useToggle from "../hooks/useToggle";
 
 const Toggle = (props: any) => {
   // -------------------------------------------------
-  // Custom Hook
+  // Custom Hooks
   // -------------------------------------------------
   const [isToggleOn, toggleSetter] = useToggle();
+  const [savedStorage, setSavedToggle] = useLocalStorage("darkmode", false)
+
+  // -------------------------------------------------
+  // Functions
+  // -------------------------------------------------
+  const handleToggleAction = (isDarkMode: boolean) => {
+    toggleSetter()
+    setSavedToggle(isDarkMode)
+  }
 
   // -------------------------------------------------
   // Render
   // -------------------------------------------------
+  console.log(savedStorage)
   return (
     <div className="dark-mode-toggle">
-      <button type="button" onClick={toggleSetter}>
+      <button type="button" onClick={() => handleToggleAction(false)}>
         ☀
       </button>
       <span className="toggle-control">
@@ -25,7 +36,7 @@ const Toggle = (props: any) => {
         />
         <label htmlFor="dmcheck" />
       </span>
-      <button type="button" onClick={toggleSetter}>
+      <button type="button" onClick={() => handleToggleAction(true)}>
         ☾
       </button>
     </div>
