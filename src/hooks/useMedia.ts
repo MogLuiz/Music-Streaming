@@ -18,7 +18,7 @@ const useMediaQuery = <T>(queries: string[], values: T[], defaultValue: T) => {
 
     mediaQuerieList.forEach((mql) => mql.addListener(handler));
     return () =>
-      mediaQuerieList.forEach((mql) => mql.addListener(handler));
+      mediaQuerieList.forEach((mql) => mql.removeListener(handler));
   });
 
   return value
