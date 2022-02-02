@@ -20,7 +20,6 @@ const Toggle = (props: any) => {
   // -------------------------------------------------
   // Render
   // -------------------------------------------------
-  console.log(savedStorage)
   return (
     <div className="dark-mode-toggle">
       <button type="button" onClick={() => handleToggleAction(false)}>
