@@ -73,4 +73,25 @@ function useFetch<T = unknown>(
   };
 
   const [state, dispatch] = useReducer(fetchReducer, initialState);
+
+  useEffect(() => {
+    if (!url) return;
+
+    const fetchData = async () => {
+      dispatch({ type: RequestType.request });
+
+      if (cache.current[url]) {
+        dispatch({ type: RequestType.success, payload: cache.current[url] });
+      } else {
+        try {
+          const response = await axios(url, options);
+          cache.current[url] = response.data;
+          if (cancelRequest) return;
+          dispatch({ type: RequestType.success, payload: response.data});
+        } catch (error) {
+            if (cancelRequest) return;
+        }
+      }
+    };
+  });
 }
