@@ -1,10 +1,14 @@
-// Packages
+// Hooks
 import { useState } from "react";
 
 // Custom Hook
 import useFetch, { RequestStatus } from "../hooks/useFetch";
 
-// Setvices
+// Components
+import { AudioPlayerProvider } from "react-use-audio-player";
+import Player from "../components/Player";
+
+// Services
 import { axiosOptions, tracksUrl } from "../service";
 
 interface ITracks {
@@ -27,6 +31,11 @@ interface ITracks {
 
 function Playlist() {
   // -------------------------------------------------
+  // States
+  // -------------------------------------------------
+  const [track, setTrack] = useState<ITracks>();
+
+  // -------------------------------------------------
   // Custom Hook
   // -------------------------------------------------
   const { status, data, error } = useFetch<ITracks[]>(tracksUrl, axiosOptions);
@@ -44,7 +53,7 @@ function Playlist() {
         <ul className="track-list">
           {data?.map((track: ITracks, index: number) => (
             <li key={`track-${index}`} className="row">
-              <button className="btn" onClick={() => console.log(track)}>
+              <button className="btn" onClick={() => setTrack(track)}>
                 <div className="album">
                   <img
                     className="album__cover"
@@ -67,6 +76,13 @@ function Playlist() {
           ))}
         </ul>
       </div>
+      <AudioPlayerProvider>
+        <Player
+          title={track?.title}
+          file={track?.stream_url}
+          artWork={track?.artwork_url}
+        />
+      </AudioPlayerProvider>
     </div>
   );
 }
