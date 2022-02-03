@@ -86,11 +86,11 @@ function useFetch<T = unknown>(
         try {
           const response = await axios(url, options);
           cache.current[url] = response.data;
-          if (cancelRequest) return;
+          if (cancelRequest.current) return;
 
           dispatch({ type: RequestType.success, payload: response.data });
         } catch (error) {
-          if (cancelRequest) return;
+          if (cancelRequest.current) return;
         }
       }
     };
@@ -99,4 +99,8 @@ function useFetch<T = unknown>(
       cancelRequest.current = true;
     };
   }, [options, url]);
+
+  return state;
 }
+
+export default useFetch;

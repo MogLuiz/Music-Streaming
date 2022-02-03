@@ -1,14 +1,17 @@
 // Packages
 import { useState } from "react";
 
+// Custom Hook
+import useFetch from "../hooks/useFetch";
+
 // Mock
 import { responseDemo } from "../mock";
 
 function Playlist() {
   // -------------------------------------------------
-  // States
+  // Custom Hook
   // -------------------------------------------------
-  const [data] = useState(responseDemo);
+  
 
   // -------------------------------------------------
   // Render
