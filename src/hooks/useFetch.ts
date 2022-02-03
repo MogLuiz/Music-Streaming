@@ -17,13 +17,13 @@ export enum RequestStatus {
   fetching = "fetching",
 }
 
-interface State<T> {
+interface IState<T> {
   status: RequestStatus;
   data?: T;
   error?: string;
 }
 
-interface Cache<T> {
+interface ICache<T> {
   [url: string]: T;
 }
 
@@ -32,10 +32,36 @@ type Action<T> =
   | { type: RequestType.success; payload: T }
   | { type: RequestType.failure; payload: string };
 
-
 function useFetch<T = unknown>(
-    url: string,
-    options?: AxiosRequestConfig
-): State<T> {
-    
+  url: string,
+  options?: AxiosRequestConfig
+): IState<T> {
+  const cache = useRef<ICache<T>>({});
+  const cancelRequest = useRef<boolean>(false);
+
+  const initialState: IState<T> = {
+    status: RequestStatus.init,
+    data: undefined,
+    error: undefined,
+  };
+
+  const fetchReducer = (state: IState<T>, action: Action<T>): IState<T> => {
+    switch (action.type) {
+      case RequestType.request:
+        return {
+          ...initialState,
+          status: RequestStatus.fetching,
+        };
+
+      case RequestType.success:
+        return {
+          ...initialState,
+          data: action.payload,
+          status: RequestStatus.fetched,
+        };
+
+      default:
+        return state;
+    }
+  };
 }
