@@ -87,11 +87,16 @@ function useFetch<T = unknown>(
           const response = await axios(url, options);
           cache.current[url] = response.data;
           if (cancelRequest) return;
-          dispatch({ type: RequestType.success, payload: response.data});
+
+          dispatch({ type: RequestType.success, payload: response.data });
         } catch (error) {
-            if (cancelRequest) return;
+          if (cancelRequest) return;
         }
       }
     };
-  });
+    fetchData();
+    return () => {
+      cancelRequest.current = true;
+    };
+  }, [options, url]);
 }
