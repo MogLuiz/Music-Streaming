@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // Custom Hook
-import useFetch from "../hooks/useFetch";
+import useFetch, { RequestStatus } from "../hooks/useFetch";
 
 // Setvices
 import { axiosOptions, tracksUrl } from "../service";
@@ -29,7 +29,11 @@ function Playlist() {
   // -------------------------------------------------
   // Custom Hook
   // -------------------------------------------------
-  const { status, data, error } = useFetch(tracksUrl, axiosOptions);
+  const { status, data, error } = useFetch<ITracks[]>(tracksUrl, axiosOptions);
+
+  if (status === RequestStatus.fetching) return <h1>loading...</h1>;
+
+  if (error) return <h1>{error}</h1>;
 
   // -------------------------------------------------
   // Render
@@ -38,7 +42,7 @@ function Playlist() {
     <div className="playlists">
       <div className="list">
         <ul className="track-list">
-          {data?.map((track, index) => (
+          {data?.map((track: ITracks, index: number) => (
             <li key={`track-${index}`} className="row">
               <button className="btn" onClick={() => console.log(track)}>
                 <div className="album">
