@@ -60,8 +60,17 @@ function useFetch<T = unknown>(
           status: RequestStatus.fetched,
         };
 
+      case RequestType.failure:
+        return {
+          ...initialState,
+          error: action.payload,
+          status: RequestStatus.error,
+        };
+
       default:
         return state;
     }
   };
+
+  const [state, dispatch] = useReducer(fetchReducer, initialState);
 }
