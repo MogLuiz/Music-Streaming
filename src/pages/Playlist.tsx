@@ -4,14 +4,32 @@ import { useState } from "react";
 // Custom Hook
 import useFetch from "../hooks/useFetch";
 
-// Mock
-import { responseDemo } from "../mock";
+// Setvices
+import { axiosOptions, tracksUrl } from "../service";
+
+interface ITracks {
+  uri: string;
+  index: number;
+  paused: boolean;
+  id: number;
+  percentage: number;
+  played: boolean;
+  currentTime: number;
+  playing: boolean;
+  artist: string;
+  title: string;
+  duration: number;
+  permalink_url: string;
+  favoritings_count: number;
+  stream_url: string;
+  artwork_url: string;
+}
 
 function Playlist() {
   // -------------------------------------------------
   // Custom Hook
   // -------------------------------------------------
-  
+  const { status, data, error } = useFetch(tracksUrl, axiosOptions);
 
   // -------------------------------------------------
   // Render
